@@ -6,7 +6,7 @@ If you run into any issues getting your environment set up, please check the Tro
 ### Mac OS X ###
 
 1. Install [Docker for Mac](https://docs.docker.com/docker-for-mac/)
-2. Add the following line to `/etc/hosts` 
+2. Add the following line to `sudo /etc/hosts` 
   - `127.0.0.1 dockerhost`
 3. [Download Go 1.6](http://golang.org/dl/) (Go 1.5 and earlier is not supported) and Node.js using Homebrew.
 	1. Download Homebrew from [http://brew.sh/](http://brew.sh/)
@@ -14,15 +14,15 @@ If you run into any issues getting your environment set up, please check the Tro
 	3. `brew install node`
 4. Set up your Go workspace
 	1. `mkdir ~/go`
-	2. Add the following to your `~/.bash_profile`  
+	2. Add the following to your `~/.bash_profile` (Change **$Home** If there is another location for your code)
+		- `export GOROOT=/usr/local/go`
 		- `export GOPATH=$HOME/go`  
-		- `export PATH=$PATH:$GOPATH/bin`  
+		- `export PATH=$PATH:$GOROOT/bin:$GOPATH/bin`  
 		- `ulimit -n 8096`  
 		- If you don't increase the file handle limit you may see some weird build issues with browserify or npm.  
 	3. Reload your bash profile  
 		`source ~/.bash_profile`
-	4. Set GOROOT (optional) in your `~/.bash_profile`
-		- `export GOROOT=/usr/local/go/`
+		
 5. Fork Mattermost on GitHub.com from [https://github.com/mattermost/platform](https://github.com/mattermost/platform), then:
 	1. `cd ~/go`  
 	2. `mkdir -p src/github.com/mattermost`  
